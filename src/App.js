@@ -20,18 +20,19 @@ import Navbar from "./components/Navbar";
 import Rightsidebar from "./components/Rightsidebar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles.css";
+import MyProfile from './components/MyProfile';
 
 
 export default function App() {
   return (
    <BrowserRouter>
-     
      <Navbar/>
      <Routes>
      <Route path='/' element={<LoginForm/>}/>
        <Route path='/about' element={<About/>}/>
        <Route path='/home' element={<Home/>}/>
        <Route path='/signup' element={<SignupForm/>}/>
+       <Route path='/myprofile' element={<MyProfile/>}/>
        {/* <Route path='/login' element={<LoginForm/>}/> */}
 
      </Routes>

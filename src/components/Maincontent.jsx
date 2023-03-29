@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Feed from "./Feed";
+import Navbar from "./Navbar";
 
 export default function Maincontent() {
   const[posts,setPosts] = useState([])
   const[users,setUsers] = useState([])
+  const[title,setTitle] = useState('')
+  const[image,setImage] = useState('')
+  const [search, setSearch] = useState("")
+  const[description,setDescription] = useState('')
   useEffect(() => {
     fetch("http://localhost:3000/posts")
       .then((response) => response.json())
@@ -16,6 +21,27 @@ export default function Maincontent() {
   }, []);
   console.log(posts)
   console.log(users)
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const post ={
+      title: title,
+      image: image,
+      description: description
+
+    }
+    fetch("http://localhost:3000/posts",{
+      method: "POST",
+      headers: {'Content-Type':'application/json'},
+      body:JSON.stringify(post)
+    })
+    .then(res => res.json())
+    .then(post => setPosts([...posts,post]))
+  }
+  const searched = posts.filter((post) => {
+    return search.toLowerCase() === "" ? post
+      : post.title.toLowerCase().includes(search);
+  });
   return (
     <>
       <div className="col-md-6 gedf-main">
@@ -54,6 +80,9 @@ export default function Maincontent() {
               </li>
             </ul>
           </div>
+          <form style={{marginLeft : '5px'}} className="d-flex " role="search">
+              <input className="form-control me-2" type="text" placeholder="Search for a post" value={search}  onChange={(e) => setSearch(e.target.value)} aria-label="Search"/>
+           </form>
           <div className="card-body">
             <div className="tab-content" id="myTabContent">
               <div
@@ -63,6 +92,7 @@ export default function Maincontent() {
                 aria-labelledby="posts-tab"
               >
                 <div className="form-group">
+                  <form onSubmit={handleSubmit}>
                   <label className="sr-only" for="message">
                     post
                   </label>
@@ -70,67 +100,43 @@ export default function Maincontent() {
                     className="form-control"
                     id="message"
                     rows="3"
-                    placeholder="What are you thinking?"
+                    placeholder="Whats your title?"
+                    onChange={(e) => setTitle(e.target.value)}
                   ></textarea>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="images"
-                role="tabpanel"
-                aria-labelledby="images-tab"
-              >
-                <div className="form-group">
-                  <div className="custom-file">
-                    <input
-                      type="file"
-                      className="custom-file-input"
-                      id="customFile"
-                    />
-                    <label className="custom-file-label" for="customFile">
-                      Upload image
-                    </label>
-                  </div>
-                </div>
-                <div className="py-4"></div>
-              </div>
-            </div>
-            <div className="btn-toolbar justify-content-between">
+                   <label className="sr-only" for="message">
+                    post
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="message"
+                    rows="3"
+                    placeholder="Image Link"
+                    onChange={(e) => setImage(e.target.value)}
+                  ></textarea>
+                   <label className="sr-only" for="message">
+                    post
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="message"
+                    rows="3"
+                    placeholder="What are you thinking?"
+                    onChange={(e) => setDescription(e.target.value)}
+                  ></textarea>
+                   <div className="btn-toolbar justify-content-between">
               <div className="btn-group">
                 <button type="submit" className="btn btn-primary">
                   share
                 </button>
               </div>
-              <div className="btn-group">
-                <button
-                  id="btnGroupDrop1"
-                  type="button"
-                  className="btn btn-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="fa fa-globe"></i>
-                </button>
-                <div
-                  className="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="btnGroupDrop1"
-                >
-                  <a className="dropdown-item" href="#">
-                    <i className="fa fa-globe"></i> Public
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="fa fa-users"></i> Friends
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="fa fa-user"></i> Just me
-                  </a>
+            </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Feed  posts={posts} users = {users}/>
+        <Feed  posts={searched} users = {users}/>
       </div>
     </>
   );

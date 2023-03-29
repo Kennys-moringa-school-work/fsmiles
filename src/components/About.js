@@ -20,10 +20,7 @@ function About() {
 
 
       <MDBRow>
-      <div className='d-flex flex-row mt-2'>
-                <MDBIcon fas icon="far fa-face-grin-beam" style={{ color: '#ff6219', marginBottom: '50px' }}/>
-                <span className="h1 fw-bold mb-0">Smiles</span>
-      </div>
+      
 
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center' style={{ fontFamily: 'Times New Roman' }}>
           {/* <p className="my-5 display-3 fw-bold ls-tight px-3" style={{color: 'hsl(218, 81%, 95%)'}}>
@@ -32,7 +29,7 @@ function About() {
           </p> */}
           <div>
             <h1 style={{color : '#120d5b'}}>About Us</h1>
-            <p style={{color: 'white', maxWidth: '350px'}}>With its intuitive user interface and customizable profiles, Smiles enables users to share their thoughts and experiences through posts, photos which ensure that users can stay up-to-date with the latest content and engage in private conversations with their connections</p>
+            <p style={{color: 'black', maxWidth: '350px'}}>With its intuitive user interface and customizable profiles, Smiles enables users to share their thoughts and experiences through posts, photos which ensure that users can stay up-to-date with the latest content and engage in private conversations with their connections</p>
           </div>
 
 

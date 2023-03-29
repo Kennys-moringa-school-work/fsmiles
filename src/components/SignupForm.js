@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -24,11 +25,10 @@ function SignupForm() {
     username: username,
     password: password
   }
-
+  const navigate = useNavigate();
 
   function handleSubmit(e){
     e.preventDefault()
-    const formData = new FormData(e.target);
     const user = {
       username: username,
       profile_pic: profilePic,
@@ -44,6 +44,7 @@ function SignupForm() {
     })
     .then(res => res.json())
     .then(user => console.log(user))
+    navigate('/')
 
   }
   return (

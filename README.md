@@ -33,11 +33,9 @@ The Smiles frontend provides the following features:
 - Users can sign up for an account, log in, and log out.
 ## Posts
 - Users can create posts on Smiles, which can include text, images, and links.
-- Posts can be edited and deleted by their creators.
 - Users can view a feed of posts from other users.
 ## Comments
 - Users can comment on posts on Smiles.
-- Comments can be edited and deleted by their creators.
 ## Smiles
 - Users can smile at a post on Smiles.
 - Users can see the number of smiles on other users' posts.

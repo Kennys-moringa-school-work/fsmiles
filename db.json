@@ -5,8 +5,8 @@
         "name": "Flower Fay",
         "pic": "https://images.unsplash.com/photo-1468327768560-75b778cbb551?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fEZsb3dlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         "location": "LA",
-        "description": "Flowers for import and export",
-        "year_established": "2012"
+        "followers": 1000,
+        "following": 10
       },
       {
         "id": 2,
@@ -14,7 +14,10 @@
         "pic": "https://plus.unsplash.com/premium_photo-1667049288927-b7c56c3f1ef0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8VG9tYXRvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "location": "Limuru",
         "description": "Tomato Tomato, we make sure you get the best",
-        "year_established": 2022
+        "year_established": 2022,
+        "followers": 1000,
+        "following": 10
+        
       },
       {
         "id": 4,
@@ -22,7 +25,9 @@
         "pic": "https://images.unsplash.com/photo-1597714026720-8f74c62310ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8b3Jhbmdlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         "location": "Utawala",
         "description": "We grow high quality oranges",
-        "year_established": 2015
+        "year_established": 2015,
+        "followers": 1000,
+        "following": 10
       },
       {
         "id": 5,
@@ -30,7 +35,9 @@
         "pic": "https://images.unsplash.com/photo-1468421870903-4df1664ac249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80",
         "location": "Westlands",
         "description": "A turkey farm\n",
-        "year_established": 2012
+        "year_established": 2012,
+        "followers": 1000,
+        "following": 10
       },
       {
         "id": 6,
@@ -38,7 +45,9 @@
         "pic": "https://images.unsplash.com/photo-1537191072641-5e19cc173c6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29jb251dHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         "location": "Kilimani, Nai",
         "description": "Save it and give it",
-        "year_established": "2018"
+        "year_established": "2018",
+        "followers": 1000,
+        "following": 10
       },
       {
         "id": 8,
@@ -46,7 +55,9 @@
         "pic": "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "location": "Austria",
         "description": "We are here for you",
-        "year_established": "2017"
+        "year_established": "2017",
+        "followers": 1000,
+        "following": 10
       },
       {
         "name": "Lenana",
@@ -54,7 +65,9 @@
         "location": "Narok",
         "description": "Specializes in wheat",
         "year_established": "2017",
-        "id": 12
+        "id": 12,
+        "followers": 1000,
+        "following": 10
       },
       {
         "name": "Mango Farm",
