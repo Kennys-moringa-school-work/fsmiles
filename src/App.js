@@ -1,10 +1,9 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import LoginForm from './components/LoginForm';
-// import SignupForm from './components/SignupForm';
-// import About from './components/About';
-// import Home from './components/Home';
-// import Topbar from './components/topbar/Topbar';
+import logo from './logo.svg';
+import './App.css';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
+import About from './components/About';
+import Home from './components/Home';
 
 // function App() {
 //   return (
@@ -19,20 +18,26 @@ import Leftsidebar from "./components/Leftsidebar";
 import Maincontent from "./components/Maincontent";
 import Navbar from "./components/Navbar";
 import Rightsidebar from "./components/Rightsidebar";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles.css";
+
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <div className="container-fluid gedf-wrapper">
-        <div className="row">
-          <Leftsidebar/>
-          <Maincontent />
-          <Rightsidebar />
-        </div>
-      </div>
-    </>
+   <BrowserRouter>
+     
+     <Navbar/>
+     <Routes>
+     <Route path='/' element={<LoginForm/>}/>
+       <Route path='/about' element={<About/>}/>
+       <Route path='/home' element={<Home/>}/>
+       <Route path='/signup' element={<SignupForm/>}/>
+       {/* <Route path='/login' element={<LoginForm/>}/> */}
+
+     </Routes>
+    
+   </BrowserRouter>
+
   );
 }
 

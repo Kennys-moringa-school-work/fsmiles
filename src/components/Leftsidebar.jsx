@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Leftsidebar() {
+export default function Leftsidebar() { 
+  const[users,setUsers] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:3000/users/1")
+      .then((response) => response.json())
+      .then((user) => setUsers(user));
+    console.log(users);
+  }, []);
 
     
   return (
@@ -8,7 +15,7 @@ export default function Leftsidebar() {
       <div className="col-md-3">
         <div className="card">
           <div className="card-body">
-            <div className="h5">@LeeCross</div>
+            <div className="h5">{users.name}</div>
             <div className="h7 text-muted">Fullname : Miracles Lee Cross</div>
             <div className="h7">
               Developer of web applications, JavaScript, PHP, Java, Python,

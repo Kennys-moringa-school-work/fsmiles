@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Feed from "./Feed";
 
 export default function Maincontent() {
+  const[posts,setPosts] = useState([])
+  const[users,setUsers] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then((response) => response.json())
+      .then((user) => setPosts(user));
+  }, []);
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((response) => response.json())
+      .then((user) => setUsers(user));
+  }, []);
+  console.log(posts)
+  console.log(users)
   return (
     <>
       <div className="col-md-6 gedf-main">
@@ -116,7 +130,7 @@ export default function Maincontent() {
             </div>
           </div>
         </div>
-        <Feed />
+        <Feed  posts={posts} users = {users}/>
       </div>
     </>
   );

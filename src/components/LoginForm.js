@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -13,8 +15,12 @@ import {
 from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
+  
+  const navigate = useNavigate();
+
   return (
     <MDBContainer className="my-5" style={{ maxHeight: '500px' }}>
 
@@ -37,10 +43,15 @@ function LoginForm() {
               <form>
                 <MDBInput wrapperClass='mb-4' label='Username' id='formControlLg' type='email' size="lg"/>
                 <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
-            </form>
+              </form>
 
-              <MDBBtn className="mb-4 px-5" color='dark' size='lg'>Login</MDBBtn>
-              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
+              <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={() => navigate('/home')}>
+                Login
+              </MDBBtn>
+              
+              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? 
+                <Link to ='/signup' style={{color: '#393f81'}}>Register here/</Link>
+              </p>
 
             </MDBCardBody>
           </MDBCol>
