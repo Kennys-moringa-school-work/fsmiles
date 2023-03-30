@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Feed from "./Feed";
 import Navbar from "./Navbar";
 
-export default function Maincontent() {
+export default function Maincontent({currentuser}) {
   const[posts,setPosts] = useState([])
   const[users,setUsers] = useState([])
   const[title,setTitle] = useState('')
@@ -12,7 +12,7 @@ export default function Maincontent() {
   useEffect(() => {
     fetch("http://localhost:3000/posts")
       .then((response) => response.json())
-      .then((user) => setPosts(user));
+      .then((post) => setPosts(post));
   }, []);
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -20,7 +20,7 @@ export default function Maincontent() {
       .then((user) => setUsers(user));
   }, []);
   console.log(posts)
-  console.log(users)
+ 
 
   function handleSubmit(e){
     e.preventDefault()
@@ -38,10 +38,10 @@ export default function Maincontent() {
     .then(res => res.json())
     .then(post => setPosts([...posts,post]))
   }
-  const searched = posts.filter((post) => {
-    return search.toLowerCase() === "" ? post
-      : post.title.toLowerCase().includes(search);
-  });
+  // const searched = posts.filter((post) => {
+  //   return search.toLowerCase() === "" ? post
+  //     : post.title.toLowerCase().includes(search);
+  // });
   return (
     <>
       <div className="col-md-6 gedf-main">
@@ -106,13 +106,16 @@ export default function Maincontent() {
                    <label className="sr-only" for="message">
                     post
                   </label>
-                  <textarea
+                  {/* <textarea
                     className="form-control"
                     id="message"
                     rows="3"
+                    type
                     placeholder="Image Link"
                     onChange={(e) => setImage(e.target.value)}
-                  ></textarea>
+                  ></textarea> */}
+                  <input type='file'> choosefile</input>
+                  
                    <label className="sr-only" for="message">
                     post
                   </label>
@@ -136,7 +139,7 @@ export default function Maincontent() {
             </div>
           </div>
         </div>
-        <Feed  posts={searched} users = {users}/>
+        <Feed  posts={posts} users = {currentuser} setPosts = {setPosts}/>
       </div>
     </>
   );

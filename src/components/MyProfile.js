@@ -1,22 +1,24 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
-const MyProfile = () => {
+const MyProfile = ({user}) => {
   return(
     <>
+    <Link to="/edituser" class="far fa-pen-to-square fa-3x" style ={{marginLeft : '75%', marginTop : '50px'}}/>
     <div style={{display : "flex"}}>
      <div className="mr-3">
         <img
-        style={{marginTop: '60px', marginLeft: '140px'}}
+        style={{marginTop: '120px', marginLeft: '140px'}}
           className="rounded-circle"
           width="200"
           length="200"
-          src="https://images.unsplash.com/photo-1679678691007-ae67bc760699?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+          src={user.profile_pic}
           alt=""
            />
      </div>
      <div style={{marginTop: '130px', marginLeft: '140px', width : '300px'}}>
-        <p className="h2 fw-bold mb-0">@Username</p>
+        <p className="h2 fw-bold mb-0">{`@ ${user.username}`}</p>
         <p style={{marginLeft : '450px'}}>Followers
         <p>
             100

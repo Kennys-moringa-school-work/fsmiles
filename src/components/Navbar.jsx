@@ -12,8 +12,9 @@ export default function Navbar() {
             <span className="h2 fw-bold mb-0">Smiles</span>
           </div>
         </a>
-        <Link to='/about' className="h2 fw-bold mb-0" style={{ color: '#ff6219', marginLeft : '1000px'}}>About us</Link>
-        <Link to= '/myprofile'className="fas fa-user-large"></Link>
+        <div style={{marginLeft : '500px'}}>
+        <Link to= '/myprofile' className="fas fa-user-large"></Link>
+        </div>
         <Link to='/myprofile' className="h2 fw-bold mb-0" style={{ color: '#ff6219', marginRight : '20px'}}>
         <div className="mr-2">
                 <img

@@ -20,66 +20,47 @@ import Leftsidebar from './Leftsidebar';
 import { FormField,  } from 'semantic-ui-react';
 import { toast } from "react-toastify";
 
-function LoginForm() {
+function LoginForm({setUser}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [currentUser,setCurrentUser]= useState([]);
+  // const [currentUser,setCurrentUser]= useState([]);
   const [isLoading,setIsLoading] = useState(false)
   const [errors,setErrors] = useState([])
   
-
-function handleLogin(e) {
+async function handleLogin(e) {
   e.preventDefault();
   setIsLoading(true);
-  console.log(currentUser)
-  fetch("http://localhost:3000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-  }).then((r) => r.json())
-  .then(user => setCurrentUser(user))
-  navigate('/home')
-}
-// async function handleLogin(e) {
-//   e.preventDefault();
-//   setIsLoading(true);
-//   console.log(currentUser)
-//   try {
-//   const response = await fetch("http://localhost:3000/login", {
-//   method: "POST",
-//   headers: {
-//   "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ username, password }),
-//   });
-//   if (response.ok) {
-//   const user = await response.json();
-//   setCurrentUser(user);
-//   setIsLoading(false);
-//   navigate('/home');
-//   toast.success('Registered successfully.');
-//   } else {
-//   const err = await response.json();
-//   setErrors(err.errors);
-//   setIsLoading(false);
-//   toast.error('Invalid credentials. Please try again.');
-//   }
-//   } catch (error) {
-//   console.log(error);
-//   }
-//   }
-console.log(currentUser)
+  try {
+  const response = await fetch("http://localhost:3000/login", {
+  method: "POST",
+  headers: {
+  "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ username, password }),
+  });
+  if (response.ok) {
+  const user = await response.json();
+  setUser(user);
+  setIsLoading(false);
+  navigate('/home');
+  toast.success('Registered successfully.');
+  } else {
+  const err = await response.json();
+  setErrors(err.error);
+  setIsLoading(false);
+  alert('Invalid credentials. Please try again.');
+  }
+  } catch (error) {
+  console.log(error);
+  }
+  }
+
 
   
   const navigate = useNavigate();
 
   return (
   <>
-   {currentUser && currentUser.id && (
-        <Leftsidebar userId={currentUser.id} />
-      )}
 
     <MDBContainer className="my-5" style={{ maxHeight: '500px' }}>
 
@@ -120,9 +101,6 @@ console.log(currentUser)
       </MDBCard>
 
     </MDBContainer>
-    {currentUser && currentUser.id && (
-        <Leftsidebar userId={currentUser.id} />
-      )}
 
     </>
   );
