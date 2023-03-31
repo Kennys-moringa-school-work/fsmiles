@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Feed from "./Feed";
+import { Upload, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+
 import Navbar from "./Navbar";
 
 export default function Maincontent({currentuser}) {
@@ -22,22 +25,37 @@ export default function Maincontent({currentuser}) {
   console.log(posts)
  
 
-  function handleSubmit(e){
-    e.preventDefault()
-    const post ={
-      title: title,
-      image: image,
-      description: description
+  // function handleSubmit(e){
+  //   e.preventDefault()
+  //   const post ={
+  //     title: title,
+  //     image: image,
+  //     description: description
 
-    }
-    fetch("http://localhost:3000/posts",{
-      method: "POST",
-      headers: {'Content-Type':'application/json'},
-      body:JSON.stringify(post)
+  //   }
+  //   fetch("http://localhost:3000/posts",{
+  //     method: "POST",
+  //     headers: {'Content-Type':'application/json'},
+  //     body:JSON.stringify(post)
+  //   })
+  //   .then(res => res.json())
+  //   .then(post => setPosts([...posts,post]))
+  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('image', image);
+  
+    fetch('http://localhost:3000/posts', {
+      method: 'POST',
+      body: formData,
     })
-    .then(res => res.json())
-    .then(post => setPosts([...posts,post]))
+      .then((res) => res.json())
+      .then((post) => setPosts([...posts, post]));
   }
+  
   // const searched = posts.filter((post) => {
   //   return search.toLowerCase() === "" ? post
   //     : post.title.toLowerCase().includes(search);
@@ -114,7 +132,7 @@ export default function Maincontent({currentuser}) {
                     placeholder="Image Link"
                     onChange={(e) => setImage(e.target.value)}
                   ></textarea> */}
-                  <input type='file'> choosefile</input>
+                  {/* <input type='file'> choosefile</input> */}
                   
                    <label className="sr-only" for="message">
                     post
@@ -126,6 +144,10 @@ export default function Maincontent({currentuser}) {
                     placeholder="What are you thinking?"
                     onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
+                  <Upload onChange={(info) => setImage(info.file)}>
+                    <Button icon={<UploadOutlined />}>Choose File</Button>
+                  </Upload>
+
                    <div className="btn-toolbar justify-content-between">
               <div className="btn-group">
                 <button type="submit" className="btn btn-primary">

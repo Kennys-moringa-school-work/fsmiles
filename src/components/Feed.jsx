@@ -93,7 +93,7 @@ export default function Feed({posts, setPosts, users}) {
             <a className="card-link" href="#">
               <h5 className="card-title">{post.title}</h5>
             </a>
-            <img src={post.image} alt="" style={{marginLeft : '15px', borderRadius : '24px'}}/>
+            <img src={`http://localhost:3000${post.image}`}  alt="" style={{marginLeft : '15px', borderRadius : '24px'}}/>
             <p className="card-text">{post.description}</p>
           </div>
           <div className="card-footer">
