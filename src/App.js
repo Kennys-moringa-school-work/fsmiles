@@ -15,6 +15,7 @@ import MyProfile from './components/MyProfile';
 import  {useEffect, useState} from 'react'
 import Edituser from './components/Edituser';
 import { useNavigate } from 'react-router-dom';
+import Addpost from './components/Addpost';
 export default function App() {
 
 
@@ -22,7 +23,7 @@ export default function App() {
 
   // auto-login
   useEffect(() => {
-    fetch("http://localhost:3000/me", { credentials: 'include' }).then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -31,6 +32,7 @@ export default function App() {
   function handleLogin(user) {
     setUser(user);
   }
+  
 
   function handleLogout(){
     setUser(null)
@@ -53,6 +55,7 @@ export default function App() {
        <Route path='/signup' element={<SignupForm/>}/>
        <Route path='/myprofile' element={<MyProfile user ={user}/>}/>
        <Route path='/edituser' element={<Edituser/>}/>
+       <Route path='/addpost' element={<Addpost/>}/>
        {/* <Route path='/users' element={<Users/>}/> */}
        {/* <Route path='/login' element={<LoginForm/>}/> */}
 

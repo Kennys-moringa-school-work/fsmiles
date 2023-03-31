@@ -1,42 +1,22 @@
-// import React from "react";
+import React from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-// export default function Rightsidebar() {
-//   return (
-//     <>
-//       <div className="col-md-3">
-//         <div className="card gedf-card">
-//           <div className="card-body">
-//             <h5 className="card-title">Card title</h5>
-//             <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-//             <p className="card-text">
-//               Some quick example text to build on the card title and make up the
-//               bulk of the card's content.
-//             </p>
-//             <a href="#" className="card-link">
-//               Card link
-//             </a>
-//             <a href="#" className="card-link">
-//               Another link
-//             </a>
-//           </div>
-//         </div>
-//         <div className="card gedf-card">
-//           <div className="card-body">
-//             <h5 className="card-title">Card title</h5>
-//             <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-//             <p className="card-text">
-//               Some quick example text to build on the card title and make up the
-//               bulk of the card's content.
-//             </p>
-//             <a href="#" className="card-link">
-//               Card link
-//             </a>
-//             <a href="#" className="card-link">
-//               Another link
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
+export default function Rightsidebar() {
+  return (
+    <>
+      <div className="col-md-3" style={{maxWidth : '200px'}}>
+        <div className="card gedf-card">
+          <div className="card-body">
+            <p className="card-text">
+              Want to add a post?
+            </p>
+            <Link to='/addpost'>
+                <Button variant="success">Add post</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

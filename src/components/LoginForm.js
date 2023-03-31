@@ -46,7 +46,7 @@ async function handleLogin(e) {
   toast.success('Registered successfully.');
   } else {
   const err = await response.json();
-  setErrors(err.error);
+  setErrors(err);
   setIsLoading(false);
   alert('Invalid credentials. Please try again.');
   }
