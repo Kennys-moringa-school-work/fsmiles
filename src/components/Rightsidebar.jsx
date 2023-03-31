@@ -12,7 +12,7 @@ export default function Rightsidebar() {
               Want to add a post?
             </p>
             <Link to='/addpost'>
-                <Button variant="success">Add post</Button>
+                <Button variant="success" >Add post</Button>
             </Link>
           </div>
         </div>

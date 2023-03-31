@@ -1,21 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import About from './components/About';
 import Home from './components/Home';
 import React from "react";
-import Leftsidebar from "./components/Leftsidebar";
-import Maincontent from "./components/Maincontent";
 import Navbar from "./components/Navbar";
-import Rightsidebar from "./components/Rightsidebar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles.css";
 import MyProfile from './components/MyProfile';
 import  {useEffect, useState} from 'react'
 import Edituser from './components/Edituser';
-import { useNavigate } from 'react-router-dom';
 import Addpost from './components/Addpost';
+
 export default function App() {
 
 

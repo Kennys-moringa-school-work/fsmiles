@@ -3,10 +3,11 @@ import { Button } from "react-bootstrap";
 import { MDBAnimation, MDBIcon } from "mdbreact";
 import { useEffect } from "react";
 
-export default function Feed({posts, setPosts, users}) {
+export default function Feed({users}) {
   const [smiles, setSmiles] = useState({});
   const [smilesCount, setSmilesCount] = useState(0);
   const [comments, setComments] = useState({});
+  const[posts,setPosts] = useState([])
   console.log(users)
 
 
