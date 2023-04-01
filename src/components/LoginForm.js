@@ -17,10 +17,10 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function LoginForm({ setUser }) {
+function LoginForm({ setUser, setShowNotification, showNotification }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showNotification, setShowNotification] = useState(false);
+  // const [showNotification, setShowNotification] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 

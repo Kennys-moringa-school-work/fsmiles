@@ -16,12 +16,7 @@ import { Redirect } from "react-router";
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  // const navigate = useNavigate()
-
+  const [showNotification, setShowNotification] = useState(false);
   // auto-login
   useEffect(() => {
     fetch("http://localhost:3000/me").then((r) => {
@@ -31,16 +26,8 @@ export default function App() {
     });
   }, []);
 
-  // .then(setUser(null))
-  // navigate('/')
-
   console.log(user);
-  // const navigate = useNavigate();
-  // if (!user) {
-  //   navigate('/');
-  // }
 
-  // if(!user) return <LoginForm setUser={setUser}/>
   return (
     <BrowserRouter>
       <Navbar />
@@ -51,14 +38,22 @@ export default function App() {
           element={
             <LoginForm
               setUser={setUser}
-              setPassword={setPassword}
-              setUsername={setUsername}
+              setShowNotification={setShowNotification}
+              showNotification={showNotification}
             />
           }
         />
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
-        <Route path="/signup" element={<SignupForm />} />
+        <Route
+          path="/signup"
+          element={
+            <SignupForm
+              setShowNotification={setShowNotification}
+              showNotification={showNotification}
+            />
+          }
+        />
         <Route path="/myprofile" element={<MyProfile user={user} />} />
         <Route path="/edituser" element={<Edituser />} />
         <Route path="/addpost" element={<Addpost />} />

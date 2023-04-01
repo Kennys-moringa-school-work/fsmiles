@@ -15,13 +15,13 @@ from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-function SignupForm() {
+function SignupForm({setShowNotification, showNotification}) {
   const[username,setUsername]= useState('')
   const[password,setPassword]= useState('')
   const[profilePic,setProfilepic] = useState('')
   const[login,setLogin] = useState('')
   const[errors, setErrors] = useState([])
-  const[notsignedup,setNotSignedup] = useState(false)
+  // const[notsignedup,setNotSignedup] = useState(false)
   const user = {
     username: username,
     password: password
@@ -46,12 +46,12 @@ function SignupForm() {
       });
       if (response.ok) {
         const user = await response.json();
-        setNotSignedup(false)
+        setShowNotification(false)
         navigate("/");
       } else {
         const err = await response.json();
         setErrors(err);
-        setNotSignedup(true)
+        setShowNotification(true)
       }
     } catch (error) {
       console.log(error);
@@ -97,7 +97,7 @@ function SignupForm() {
 
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
               </form>
-              {notsignedup && (
+              {showNotification && (
                 <div className="alert alert-danger" role="alert">
                   User already exists
                 </div>
