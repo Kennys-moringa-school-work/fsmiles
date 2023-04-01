@@ -106,6 +106,7 @@ export default function Feed({ users }) {
       .catch(error => {
         console.error(error);
       });
+      console.log("save clicked")
   };
   
   let postcards = posts.map((post) => (
