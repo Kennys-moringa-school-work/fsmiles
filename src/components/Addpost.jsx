@@ -101,9 +101,7 @@ function Addpost() {
                       placeholder="Image Link"
                       onChange={(e) => setImage(e.target.value)}
                     ></textarea>
-                    {/* <Upload onChange={(info) => setImage(info.file)} >
-                    <Button icon={<UploadOutlined />}>Choose File</Button>
-                  </Upload> */}
+
 
                     <div className="btn-toolbar justify-content-between">
                       <div className="btn-group" style={{ marginLeft: '350px' }} >

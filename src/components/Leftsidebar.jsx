@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +11,12 @@ export default function Leftsidebar({ user, setUser, onLogout}) {
     navigate('/')
   }
   
- 
-console.log(user)
+//   useEffect(() => {
+//     fetch(`http://localhost:3000/posts/${user.id}`)
+//     .then(res => res.json())
+//     .then(user => setUser(user))
+//   })
+// console.log(user)
 
 
   return (

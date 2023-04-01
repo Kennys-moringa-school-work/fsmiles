@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { MDBAnimation, MDBIcon } from "mdbreact";
 import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Feed({ users }) {
   const [smiles, setSmiles] = useState({});
   const [smilesCount, setSmilesCount] = useState(0);
   const [comments, setComments] = useState({});
   const [posts, setPosts] = useState([])
+  const [editingPost, setEditingPost] = useState(null);
+  const [showEditForm,setShowEditForm] = useState(false)
+
+  const navigate = useNavigate()
   console.log(users)
 
 
@@ -50,24 +55,59 @@ export default function Feed({ users }) {
       }));
     }
   };
-  // const handleDeletePost = (postId) => {
-  //   fetch(`http://localhost:3000/posts/${postId}`, {
-  //     method: 'DELETE',
-  //   })
-  //     .then(response => {
-  //       if (response.ok) {
-  //         // remove the deleted post from the list of posts
-  //         const updatedPosts = posts.filter(post => post.id !== postId);
-  //         setPosts(updatedPosts);
-  //       } else {
-  //         throw new Error('Failed to delete post');
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  //   console.log("post deleted")
-  // };
+  const handleDeletePost = (postId) => {
+    fetch(`http://localhost:3000/posts/${postId}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          // remove the deleted post from the list of posts
+          const updatedPosts = posts.filter(post => post.id !== postId);
+          setPosts(updatedPosts);
+        } else {
+          throw new Error('Failed to delete post');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    console.log("post deleted")
+  };
+
+  const handleUpdatePost = (e) => {
+    e.preventDefault();
+    const title = e.target.elements.title.value;
+    const description = e.target.elements.description.value;
+    const image = e.target.elements.image.value;
+  
+    fetch(`http://localhost:3000/posts/${editingPost.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, description, image })
+    })
+      .then(response => {
+        if (response.ok) {
+          // update the post in the list of posts
+          const updatedPosts = posts.map(post => {
+            if (post.id === editingPost.id) {
+              return { ...post, title, description, image };
+            }
+            return post;
+          });
+          setPosts(updatedPosts);
+          setShowEditForm(false);
+          setEditingPost(null);
+        } else {
+          throw new Error('Failed to update post');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+  
   let postcards = posts.map((post) => (
     <MDBAnimation type='fadeIn' duration='0.3s' delay='0.2s' className='mb-4'>
       <div key={post.id} className="card gedf-card" style={{ maxWidth: "600px", marginLeft: '125px' }}>
@@ -131,11 +171,17 @@ export default function Feed({ users }) {
               placeholder="Add a comment"
               aria-label="Search"
               name="comment"
+              style={{ borderRadius: '24px' }}
               required
             />
-            <Button type="submit">Post Comment</Button>
+            <Button type="submit" style={{ borderRadius: '24px', backgroundColor: '#d03206' }}>Post Comment</Button>
           </form>
-          <MDBIcon far icon="edit" />
+          <Button style={{ marginTop: '10px', borderRadius: '30px', backgroundColor: 'greenyellow' }} onClick={() => {
+            setEditingPost(post);
+            setShowEditForm(true);
+          }} >
+            <MDBIcon far icon="edit" />
+          </Button >
           {comments[post.id] &&
             comments[post.id].map((comment, index) => (
               <div key={index}>
@@ -144,6 +190,12 @@ export default function Feed({ users }) {
             ))}
         </div>
         {/* <Button type="submit" onClick={handleDeletePost(post.id)} variant = 'danger'>Delete</Button> */}
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => handleDeletePost(post.id)}
+        >
+          Delete
+        </button>
 
       </div>
     </MDBAnimation>
@@ -152,6 +204,26 @@ export default function Feed({ users }) {
   return (
     <>
       {postcards}
+      {showEditForm && (
+        <form onSubmit={handleUpdatePost} >
+          <h3 style={{marginLeft:'250px', color:'orangered'}}>Edit Post</h3>
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">Title</label>
+            <input type="text" className="form-control" id="title" name="title" defaultValue={editingPost.title} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Description</label>
+            <textarea className="form-control" id="description" name="description" defaultValue={editingPost.description} required></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="image" className="form-label">Image URL</label>
+            <input type="text" className="form-control" id="image" name="image" defaultValue={editingPost.image} required />
+          </div>
+          <Button type="submit" style={{ borderRadius: '24px', backgroundColor: '#d03206' }}>Save</Button>
+          <Button style={{ marginLeft: '10px', borderRadius: '24px', backgroundColor: '#d03206' }} onClick={() => setShowEditForm(false)}>Cancel</Button>
+        </form>
+      )}
+
     </>
   );
 }

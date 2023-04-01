@@ -13,6 +13,7 @@ import Edituser from "./components/Edituser";
 import Addpost from "./components/Addpost";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router";
+import Editpost from "./components/Editpost";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -54,6 +55,7 @@ export default function App() {
             />
           }
         />
+        <Route path="/editpost" element={<Editpost/>}/>
         <Route path="/myprofile" element={<MyProfile user={user} />} />
         <Route path="/edituser" element={<Edituser />} />
         <Route path="/addpost" element={<Addpost />} />
