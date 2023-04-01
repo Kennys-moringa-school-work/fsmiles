@@ -20,32 +20,65 @@ function SignupForm() {
   const[password,setPassword]= useState('')
   const[profilePic,setProfilepic] = useState('')
   const[login,setLogin] = useState('')
-  const [errors, setErrors] = useState([])
+  const[errors, setErrors] = useState([])
+  const[notsignedup,setNotSignedup] = useState(false)
   const user = {
     username: username,
     password: password
   }
   const navigate = useNavigate();
 
-  function handleSubmit(e){
-    e.preventDefault()
+  // function handleSubmit(e){
+  //   e.preventDefault()
+    // const user = {
+    //   username: username,
+    //   profile_pic: profilePic,
+    //   password: password,
+    // }
+  
+  //   console.log("ive been clicked")
+  
+  //   fetch("http://localhost:3000/users",{
+  //     method: "POST",
+  //     headers: {'Content-Type':'application/json'},
+  //     body:JSON.stringify(user)
+  //   })
+  //   .then(res => res.json())
+  //   .then(user => console.log(user))
+  //   navigate('/')
+
+  // }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // setIsLoading(true);
     const user = {
       username: username,
       profile_pic: profilePic,
       password: password,
     }
-  
-    console.log("ive been clicked")
-  
-    fetch("http://localhost:3000/users",{
-      method: "POST",
-      headers: {'Content-Type':'application/json'},
-      body:JSON.stringify(user)
-    })
-    .then(res => res.json())
-    .then(user => console.log(user))
-    navigate('/')
-
+    try {
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      if (response.ok) {
+        const user = await response.json();
+        setNotSignedup(false)
+        navigate("/");
+        // toast.success("Registered successfully.");
+      } else {
+        const err = await response.json();
+        setErrors(err);
+        setNotSignedup(true)
+        // alert("Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <MDBContainer fluid className='p-4 background-radial-gradient overflow-hidden'>
@@ -87,6 +120,11 @@ function SignupForm() {
 
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
               </form>
+              {notsignedup && (
+                <div className="alert alert-danger" role="alert">
+                  User already exists
+                </div>
+              )}
             </MDBCardBody>
           </MDBCard>
 
