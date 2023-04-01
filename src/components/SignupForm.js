@@ -28,27 +28,6 @@ function SignupForm() {
   }
   const navigate = useNavigate();
 
-  // function handleSubmit(e){
-  //   e.preventDefault()
-    // const user = {
-    //   username: username,
-    //   profile_pic: profilePic,
-    //   password: password,
-    // }
-  
-  //   console.log("ive been clicked")
-  
-  //   fetch("http://localhost:3000/users",{
-  //     method: "POST",
-  //     headers: {'Content-Type':'application/json'},
-  //     body:JSON.stringify(user)
-  //   })
-  //   .then(res => res.json())
-  //   .then(user => console.log(user))
-  //   navigate('/')
-
-  // }
-
   async function handleSubmit(e) {
     e.preventDefault();
     // setIsLoading(true);
@@ -69,12 +48,10 @@ function SignupForm() {
         const user = await response.json();
         setNotSignedup(false)
         navigate("/");
-        // toast.success("Registered successfully.");
       } else {
         const err = await response.json();
         setErrors(err);
         setNotSignedup(true)
-        // alert("Invalid credentials. Please try again.");
       }
     } catch (error) {
       console.log(error);
