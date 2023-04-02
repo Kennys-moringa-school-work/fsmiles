@@ -21,6 +21,10 @@
     "styled-components": "^5.3.9",
     "web-vitals": "^2.1.4"
   },
+  "resolutions": {
+    "@types/react": "^18.0.30"
+  },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -45,4 +49,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
