@@ -14,7 +14,11 @@ useEffect(() => {
   if (!user) {
     navigate('/') // Redirect to login page
   }
-}, []);
+}, [user, navigate]);
+
+  if (!user) {
+    return null; // Hide the Home component until the user is logged in
+  }
 
   return (
     <>

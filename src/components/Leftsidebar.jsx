@@ -11,12 +11,12 @@ export default function Leftsidebar({ user, setUser, onLogout}) {
     navigate('/')
   }
   
-//   useEffect(() => {
-//     fetch(`http://localhost:3000/posts/${user.id}`)
+//  useEffect(() => {
+//     fetch(`http://localhost:3000/me`)
 //     .then(res => res.json())
 //     .then(user => setUser(user))
 //   })
-// console.log(user)
+// console.log(user)//  
 
 
   return (

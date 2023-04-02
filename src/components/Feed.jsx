@@ -177,7 +177,7 @@ export default function Feed({ users }) {
             />
             <Button type="submit" style={{ borderRadius: '24px', backgroundColor: '#d03206' }}>Post Comment</Button>
           </form>
-          <Button style={{ marginTop: '10px', borderRadius: '30px', backgroundColor: 'greenyellow' }} onClick={() => {
+          <Button style={{ marginTop: '10px', borderRadius: '30px', backgroundColor: 'greenyellow' }} href='/home#edituser' onClick={() => {
             setEditingPost(post);
             setShowEditForm(true);
           }} >
@@ -206,7 +206,7 @@ export default function Feed({ users }) {
     <>
       {postcards}
       {showEditForm && (
-        <form onSubmit={handleUpdatePost} >
+        <form onSubmit={handleUpdatePost} id="edituser" >
           <h3 style={{marginLeft:'250px', color:'orangered'}}>Edit Post</h3>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">Title</label>

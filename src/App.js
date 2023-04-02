@@ -16,13 +16,15 @@ import { Redirect } from "react-router";
 import Editpost from "./components/Editpost";
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
+  const [loggedin,setLoggedin] = useState(false)
   const [showNotification, setShowNotification] = useState(false);
   // auto-login
   useEffect(() => {
     fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+        setLoggedin(true)
       }
     });
   }, []);
@@ -31,7 +33,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar user={loggedin}/>
       <Routes>
         {/* if(!user) return <LoginForm setUser={setUser}/> */}
         <Route

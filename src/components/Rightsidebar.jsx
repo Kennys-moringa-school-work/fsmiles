@@ -9,7 +9,7 @@ export default function Rightsidebar({setUser}) {
       method : 'DELETE'
     })
     .then(res => res.json)
-    .then(setUser(null))
+    .then(user => setUser(null))
     navigate('/')
   }
   return (
