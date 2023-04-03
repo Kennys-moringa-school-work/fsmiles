@@ -1,6 +1,6 @@
 import Leftsidebar from "./Leftsidebar";
 import Rightsidebar from "./Rightsidebar";
-import "/home/latimore/smiles/src/styles.css";
+import './styles.css'
 import Feed from "./Feed";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
