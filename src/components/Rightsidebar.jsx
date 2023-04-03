@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Rightsidebar({setUser}) {
   const navigate = useNavigate()
   function handleLogout(){
-    fetch("http://localhost:3000/logout",{
+    fetch("https://mysmile.onrender.com/logout",{
       method : 'DELETE'
     })
     .then(res => res.json)

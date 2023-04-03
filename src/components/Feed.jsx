@@ -17,7 +17,7 @@ export default function Feed({ users }) {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/posts")
+    fetch("https://mysmile.onrender.com/posts")
       .then((response) => response.json())
       .then((post) => setPosts(post));
   }, []);
@@ -56,7 +56,7 @@ export default function Feed({ users }) {
     }
   };
   const handleDeletePost = (postId) => {
-    fetch(`http://localhost:3000/posts/${postId}`, {
+    fetch(`https://mysmile.onrender.com/posts/${postId}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -80,7 +80,7 @@ export default function Feed({ users }) {
     const description = e.target.elements.description.value;
     const image = e.target.elements.image.value;
   
-    fetch(`http://localhost:3000/posts/${editingPost.id}`, {
+    fetch(`https://mysmile.onrender.com/posts/${editingPost.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

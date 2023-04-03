@@ -12,9 +12,9 @@ export default function Navbar(user) {
             <span className="h2 fw-bold mb-0">Smiles</span>
           </div>
         </a>
-        <div style={{ marginLeft: '1200px' }}>
+        {/* <div style={{ marginLeft: '1200px' }}>
           <Link to='/myprofile' className="fas fa-user-large"></Link>
-        </div>
+        </div> */}
         <a href="/home">
         {user &&
         <div style={{marginRight:'30px'}}>

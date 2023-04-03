@@ -22,7 +22,7 @@ function Addpost() {
       description: description
 
     }
-    fetch("http://localhost:3000/posts", {
+    fetch("https://mysmile.onrender.com/posts", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post)

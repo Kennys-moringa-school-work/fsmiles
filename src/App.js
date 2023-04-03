@@ -21,7 +21,7 @@ export default function App() {
   const [showNotification, setShowNotification] = useState(false);
   // auto-login
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("https://mysmile.onrender.com/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
         setLoggedin(true)
@@ -59,7 +59,7 @@ export default function App() {
         />
         <Route path="/editpost" element={<Editpost/>}/>
         <Route path="/myprofile" element={<MyProfile user={user} />} />
-        <Route path="/edituser" element={<Edituser />} />
+        <Route path="/edituser" element={<Edituser user={user}/>} />
         <Route path="/addpost" element={<Addpost />} />
         {/* <Route path='/users' element={<Users/>}/> */}
         {/* <Route path='/login' element={<LoginForm/>}/> */}

@@ -25,10 +25,7 @@ const MyProfile = ({user}) => {
             </p></p>
         <div style={{marginTop : '20px'}}>
             <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-            recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor
-            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste
-            voluptates.
+            {user.bio}
             </p> 
             <p>Followers</p>  
         </div>    

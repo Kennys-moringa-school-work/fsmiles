@@ -47,7 +47,7 @@ export default function Leftsidebar({ user, setUser, onLogout}) {
             <li className="list-group-item">
               <div className="h6 text-muted">{user.bio}</div>
               <div className="h5">
-              <Link to="/edituser" class="far fa-pen-to-square fa-1.5x" style ={{marginLeft : '85%', marginTop : '50px'}}/>
+              {/* <Link to="/edituser" class="far fa-pen-to-square fa-1.5x" style ={{marginLeft : '85%', marginTop : '50px'}}/> */}
               <div>
               <Button onClick={handleLogout} variant="danger">Log out</Button>
               </div>
