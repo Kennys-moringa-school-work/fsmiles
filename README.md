@@ -62,3 +62,6 @@ Smiles is licensed under the MIT License. See LICENSE.txt for more information.
 
 # Conclusion
 The Smiles frontend provides a simple and intuitive user interface for the Smiles social media platform. It's built with modern web technologies and provides a seamless user experience for creating and sharing content with others. Whether you're a developer looking to learn more about building web applications or a user looking for a new social media platform to try out, Smiles is a great choice.
+
+Frontend Deployed Link: [https://smiles-kennysaruni.vercel.app/](https://smiles-kennysaruni.vercel.app/)
+Backend Deployed Link: [https://mysmile.onrender.com](https://mysmile.onrender.com)
