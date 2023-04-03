@@ -11,7 +11,7 @@
     "antd": "^5.3.3",
     "mdb-react-ui-kit": "^6.0.0",
     "mdbreact": "^5.2.0",
-    "react": "^18.2.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
@@ -22,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "resolutions": {
-    "@types/react": "^18.0.30"
+    "react": "17.0.2"
   },
   
   "scripts": {
@@ -49,5 +49,4 @@
       "last 1 safari version"
     ]
   }
-  
 }
